@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>BITLAB</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="resources/plugins/fontawesome-free/css/all.min.css" />
+        <!-- Ionicons -->
+        <link
+            rel="stylesheet"
+            href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+            />
+        <link rel="icon" type="image/png" href="resources/dist/img/favicon.png" />
+        <!-- Theme style -->
+        <link rel="stylesheet" href="resources/dist/css/adminlte.min.css" />
+
+        <!-- overlayScrollbars -->
+        <link
+            rel="stylesheet"
+            href="resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
+            />
+        <!-- Google Font: Source Sans Pro -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+            rel="stylesheet"
+            />
+
+    </h:head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+        <h:body>
+            <div class="wrapper">
+
+                <f:event listener="#{usuarioManaged.validarSesion()}" type="preRenderView"/>
+
+                <!-- Navbar -->
+                <nav
+                    class="main-header navbar navbar-expand navbar-white navbar-light"
+                    style="padding: 0.8rem 0.5rem !important;"
+                    >
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+                               ><i class="fas fa-bars"></i
+                                ></a>
+                        </li>
+                    </ul>
+
+                    <!-- Right navbar links -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Profile Dropdown Menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" href="#" style="pad">
+                                <div class="image">
+                                    <img
+                                        src="resources/dist/img/user2-160x160.jpg"
+                                        class="user-image"
+                                        alt="User Image"
+                                        width="30"
+                                        style="border-radius: 50%;"
+                                        />
+                                    <!--<p:graphicImage value="/images/#{fotoManaged.nombreFoto}" alt="User Image" styleClass="user-image" width="30" style="border-radius: 50%;" />-->
+                                    <!--<span class="d-none d-md-inline">Alexander Pierce</span>-->
+                                    <h:outputText value="#{usuarioManaged.nombre}" styleClass="d-none d-md-inline"/>
+                                </div>
+                            </a>
+                            <!-- Profile Option -->
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <div class="dropdown-item">
+                                    <!-- Message Start -->
+                                    <div class="media">
+                                        <img
+                                            src="resources/dist/img/user2-160x160.jpg"
+                                            alt="User Avatar"
+                                            class="img-size-50 mr-3 img-circle"
+                                            />
+                                        <!--<p:graphicImage value="/images/#{fotoManaged.nombreFoto}" alt="User Avatar" styleClass="img-size-50 mr-3 img-circle" />-->
+                                        <div class="media-body">
+                                            <h3 class="dropdown-item-title">
+                                                <h:outputText value="#{usuarioManaged.nombre}" />
+                                            </h3>
+                                            <!--<p class="text-sm">Aplicante</p>-->
+                                            <h:outputText value="#{usuarioManaged.rol}" styleClass="text-sm" />
+                                        </div>
+                                    </div>
+                                    <!-- Message End -->
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div>
+                                <h:outputLink value="profile.bitlab" styleClass="dropdown-item float-right" >
+                                    <i class="fas fa-user mr-2"></i>
+                                    Perfil
+                                </h:outputLink>
+                                <h:outputLink value="resources/dist/bitlab.pdf" target="_blank" styleClass="dropdown-item float-right" >
+                                    <i class="fas fa-book mr-2"> </i>
+                                    Ayuda
+                                </h:outputLink>
+                                <h:form>
+                                    <div class="dropdown-divider"></div>
+                                    <h:commandLink styleClass="dropdown-item float-right" actionListener="#{usuarioManaged.cerrarSesion()}">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesion
+                                    </h:commandLink>
+                                </h:form>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.navbar -->
+
+                <!-- Main Sidebar Container -->
+                <aside
+                    class="main-sidebar elevation-4 sidebar-light-purple sidebar-no-expand"
+                    >
+
+                    <!-- Brand Logo -->
+                    <a
+                        href="index.bitlab"
+                        class="brand-link navbar-white"
+                        style="padding: 1.13rem 0.5rem !important;"
+                        >
+                        <img
+                            src="resources/dist/img/BitlabLogo.png"
+                            alt="Bitlab Logo"
+                            class="brand-image"
+                            style="opacity: 0.8; border-radius: 25%"
+                            />
+                        <span class="brand-text font-weight-dark">B I T L A B</span>
+                    </a>
+
+                    <!-- Sidebar -->
+                    <div
+                        class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition"
+                        >
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul
+                                class="nav nav-pills nav-sidebar flex-column"
+                                data-widget="treeview"
+                                role="menu"
+                                data-accordion="false"
+                                >
+                                <!-- Add icons to the links using the .nav-icon class
+                                 with font-awesome or any other icon font library -->
+                                <ui:insert name="index-menu">
+                                    <li class="nav-item">
+                                        <a href="index.bitlab" class="nav-link">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>
+                                                Dashboard
+                                            </p>
+                                        </a>                               
+                                    </li>
+                                </ui:insert>
+                                <ui:insert name="profile-menu">
+                                    <li class="nav-item">
+                                        <a href="profile.bitlab" class="nav-link">
+                                            <i class="fas fa-user nav-icon"></i>
+                                            <p>Perfil</p>
+                                        </a>
+                                    </li>
+                                </ui:insert>
+                                <ui:fragment rendered="#{usuarioManaged.rol eq 'Candidato'}">
+                                    <ui:insert name="crud-menu">
+                                        <li class="nav-item">
+                                            <a href="cursos-disponibles.bitlab" class="nav-link">
+                                                <i class="fas fa-laptop-code nav-icon"></i>
+                                                <p>Cursos Disponibles</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                </ui:fragment>
+                                <ui:insert name="prueba-menu">
+                                    <li class="nav-item">
+
+                                    </li>
+                                </ui:insert>
+                                <!-- Menu SideBar Division -->
+                                <ui:fragment rendered="#{usuarioManaged.rol eq 'Administrador' || usuarioManaged.rol eq 'Supervisor' || usuarioManaged.rol eq 'Analista de seleccion'  }">
+                                    <li class="nav-header">SELECCION APLICANTES</li>
+                                    <li class="nav-item has-treeview">
+                                        <a href="#" class="nav-link">
+                                            <i class="nav-icon fas fa-clipboard-list"></i>
+                                            <p>
+                                                Gestión De aplicantes
+                                                <i class="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <ui:insert name="aplicante-menu">
+                                                <li class="nav-item">
+                                                    <a href="aplicante.bitlab" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Aplicantes</p>
+                                                    </a>
+                                                </li>
+                                            </ui:insert>
+                                            <ui:insert name="preseleccion-menu">
+                                                <li class="nav-item">
+                                                    <a href="preseleccion.bitlab" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Pre-Seleccionados</p>
+                                                    </a>
+                                                </li>
+                                            </ui:insert>
+                                            <ui:insert name="seleccionado-menu">
+                                                <li class="nav-item">
+                                                    <a href="seleccionado.bitlab" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Seleccionados</p>
+                                                    </a>
+                                                </li>
+                                            </ui:insert>
+                                        </ul>
+                                    </li>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{usuarioManaged.rol eq 'Administrador' || usuarioManaged.rol eq 'Supervisor' }">
+                                    <li class="nav-header">ADMINISTRACION</li>
+                                    <ui:insert name="docente-menu">
+                                        <li class="nav-item">
+                                            <a href="docente.bitlab" class="nav-link">
+                                                <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                                                <p>Gestión de docentes</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="alumno-menu">
+                                        <li class="nav-item">
+                                            <a href="alumnos.bitlab" class="nav-link">
+                                                <i class="fas fa-user-graduate nav-icon"></i>
+                                                <p>Gestión de alumnos</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{usuarioManaged.rol eq 'Administrador'  }">
+                                    <ui:insert name="usuario-menu">
+                                        <li class="nav-item">
+                                            <a href="usuario.bitlab" class="nav-link">
+                                                <i class="fas fa-users nav-icon"></i>
+                                                <p>Gestión de usuarios</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="curso-menu">
+                                        <li class="nav-item">
+                                            <a href="curso.bitlab" class="nav-link">
+                                                <i class="fas fa-laptop-code nav-icon"></i>
+                                                <p>Gestión de cursos</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="idioma-menu">
+                                        <li class="nav-item">
+                                            <a href="idiomaIngles.bitlab" class="nav-link">
+                                                <i class="fas fa-language nav-icon"></i>
+                                                <p>Gestión de idioma</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="genero-menu">
+                                        <li class="nav-item">
+                                            <a href="sexo.bitlab" class="nav-link">
+                                                <i class="fas fa-transgender-alt nav-icon"></i>
+                                                <p>Gestión de géneros</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="academico-menu">
+                                        <li class="nav-item">
+                                            <a href="nivelAcademico.bitlab" class="nav-link">
+                                                <i class="fas fa-school nav-icon"></i>
+                                                <p>Gestión de nivel académico</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                    <ui:insert name="ocupacion-menu">
+                                        <li class="nav-item">
+                                            <a href="ocupacion.bitlab" class="nav-link">
+                                                <i class="fas fa-briefcase nav-icon"></i>
+                                                <p>Gestión de ocupación</p>
+                                            </a>
+                                        </li>
+                                    </ui:insert>
+                                </ui:fragment>
+                                <!-- Menu SideBar Division -->
+                                <li class="nav-header"></li>
+                                <h:form styleClass="nav-item">
+                                    <h:commandLink styleClass="nav-link" actionListener="#{usuarioManaged.cerrarSesion()}" >
+                                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                                        <p>Cerrar Sesión</p>
+                                    </h:commandLink>
+                                </h:form>
+                                <li class="nav-header"></li>
+                            </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+
+                    <ui:insert name="content">
+
+                    </ui:insert>      
+                </div>
+
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <style>
+                    .customDialog .ui-dialog-content.ui-widget-content, .customDialog .ui-dialog-titlebar.ui-widget-header{
+                        background: transparent;
+                        border: none;
+                        min-width: 90px;
+                        min-height: 80px;
+                    }
+                    body .ui-dialog{
+                        box-shadow: none;
+                    }
+                </style>
+                <p:dialog widgetVar="statusDialog" modal="false" draggable="false" closable="false" resizable="false" showHeader="false" responsive="true" position="right bottom" styleClass="customDialog">
+                    <i class="pi pi-spin pi-spinner" style="font-size: 5em;"/>
+                </p:dialog>
+
+                <!--/.content-wrapper--> 
+                <footer class="main-footer">
+                    <strong
+                        >Copyright &copy; 2020
+                        <a href="https://bitlab.edu.sv/">BITLAB</a>.</strong
+                    >
+                    All rights reserved.
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Version</b> 1.0.5
+                    </div>
+                </footer>
+
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+            </div>
+            <!-- ./wrapper -->
+            <!-- Bootstrap 4 -->
+            <script src="resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- overlayScrollbars -->
+            <script src="resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+            <!-- AdminLTE App -->
+            <script src="resources/dist/js/adminlte.js"></script>
+        </h:body>
+    </body>
+</html>
